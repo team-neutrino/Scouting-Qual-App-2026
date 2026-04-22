@@ -44,8 +44,10 @@
             var autonActions = sessionStorage.getItem("autonActions");
             var teleopActions = sessionStorage.getItem("teleopActions");
             var defenseComments = sessionStorage.getItem("defenseComments");
-            var robustnessRating = sessionStorage.getItem("robustnessRating");
-            var performanceRating = sessionStorage.getItem("performanceRating");
+
+            if (defenseComments === "") {
+                defenseComments = "\n"; //CHANGE ME TO A SPACE IF THIS DOES NOT WORK
+            }
 
             qrcode.clear();
             qrcode.makeCode(
@@ -61,11 +63,7 @@
                 "\t" +
                 teleopActions +
                 "\t" +
-                defenseComments +
-                "\t" +
-                robustnessRating +
-                "\t" +
-                performanceRating
+                defenseComments
             );
         }
 

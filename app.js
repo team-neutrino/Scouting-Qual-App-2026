@@ -4,8 +4,6 @@ let extraData = []; //['teamNum', 'matchNum', 'scout', 'comment', 'alliance pick
 var autonActions = "";
 var teleopActions = "";
 var defenseComments = "";
-var robustnessRating = 0;
-var performanceRating = 0;
 var blue1 = [8770,
   3055,
   5557,
@@ -461,14 +459,6 @@ function addComments(id) {
   }
 }
 
-function addRating(id) {
-  if (id == "robustnessRating") {
-    robustnessRating = document.getElementById("robustnessRating").value || 0;
-  } else {
-    performanceRating = document.getElementById("performanceRating").value || 0;
-  }
-}
-
 function alliancePick(alliance) {
   extraData[4] = alliance;
   console.log(extraData);
@@ -513,8 +503,6 @@ function saveData() {
   sessionStorage.setItem("autonActions", autonActions);
   sessionStorage.setItem("teleopActions", teleopActions);
   sessionStorage.setItem("defenseComments", defenseComments);
-  sessionStorage.setItem("robustnessRating", robustnessRating.toString());
-  sessionStorage.setItem("performanceRating", performanceRating.toString());
 }
 
 function getData() {
@@ -522,14 +510,10 @@ function getData() {
   autonActions = sessionStorage.getItem("autonActions");
   teleopActions = sessionStorage.getItem("teleopActions");
   defenseComments = sessionStorage.getItem("defenseComments");
-  robustnessRating = parseInt(sessionStorage.getItem("robustnessRating"), 10);
-  performanceRating = parseInt(sessionStorage.getItem("performanceRating"), 10);
   console.log(extraData);
   console.log(autonActions)
   console.log(teleopActions);
   console.log(defenseComments);
-  console.log(robustnessRating);
-  console.log(performanceRating);
 }
 
 function getList(name) {
@@ -556,12 +540,6 @@ function displayBoxData() {
   }
   if (document.getElementById('defenseComments') !== null) {
     document.getElementById('defenseComments').value = defenseComments;
-  }
-  if (document.getElementById('robustnessRating') !== null) {
-    document.getElementById('robustnessRating').value = robustnessRating;
-  }
-  if (document.getElementById('performanceRating') !== null) {
-    document.getElementById('performanceRating').value = performanceRating;
   }
 }
 
